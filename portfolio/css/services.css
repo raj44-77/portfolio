@@ -1,0 +1,74 @@
+/* ============ SERVICES SECTION ============ */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 1000px) {
+  .services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service {
+  position: relative;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, background 0.3s;
+  overflow: hidden;
+}
+
+.service:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 107, 44, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.service .num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+}
+
+.service h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin: 14px 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.service .arrow-icon {
+  margin-top: 22px;
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 99px;
+  background: rgba(255, 107, 44, 0.1);
+  border: 1px solid rgba(255, 107, 44, 0.3);
+  color: var(--accent-2);
+  transition: transform 0.3s, background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.service:hover .arrow-icon {
+  transform: rotate(-45deg);
+  background: var(--grad);
+  color: #1a0800;
+  border-color: transparent;
+}

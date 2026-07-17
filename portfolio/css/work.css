@@ -1,0 +1,155 @@
+/* ============ WORK / PROJECTS SECTION ============ */
+.projects {
+  display: grid;
+  gap: 24px;
+}
+
+.project {
+  position: relative;
+  padding: 36px;
+  border-radius: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .project {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project:hover {
+  border-color: rgba(255, 107, 44, 0.45);
+  transform: translateY(-4px);
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(600px 300px at var(--mx, 80%) var(--my, 20%), rgba(255, 107, 44, 0.14), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.project:hover::before {
+  opacity: 1;
+}
+
+.project .meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.project .meta span {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.project h3 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.project p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+.project .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  color: var(--accent-2);
+  font-weight: 600;
+  font-size: 14.5px;
+  transition: color 0.25s;
+}
+
+.project .link .arrow {
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.project:hover .link .arrow {
+  transform: translate(6px, -6px);
+}
+
+.project .visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #16161b, #0d0d10);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+}
+
+.project .visual .badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project .visual .brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: -0.02em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  padding: 20px;
+}
+
+.project .visual .sub {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project .visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(500px 300px at 30% 20%, rgba(255, 107, 44, 0.22), transparent 60%),
+    radial-gradient(400px 260px at 80% 80%, rgba(255, 107, 44, 0.12), transparent 60%);
+  pointer-events: none;
+}

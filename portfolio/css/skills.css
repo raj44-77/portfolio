@@ -1,0 +1,58 @@
+/* ============ SKILLS SECTION ============ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1000px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.skill {
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 107, 44, 0.35);
+  background: rgba(255, 107, 44, 0.05);
+}
+
+.skill .ic {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 107, 44, 0.12);
+  color: var(--accent-2);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.skill h4 {
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  margin-bottom: 6px;
+}
+
+.skill p {
+  font-size: 13.5px;
+  color: var(--muted);
+}

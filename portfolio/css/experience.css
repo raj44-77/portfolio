@@ -1,0 +1,57 @@
+/* ============ EXPERIENCE / TIMELINE SECTION ============ */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-left: 22px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+}
+
+.tl-item {
+  position: relative;
+  padding: 24px 28px;
+  border-radius: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 32px;
+  width: 14px;
+  height: 14px;
+  border-radius: 99px;
+  background: var(--grad);
+  box-shadow: 0 0 0 4px rgba(255, 107, 44, 0.15), 0 0 20px rgba(255, 107, 44, 0.6);
+}
+
+.tl-item .when {
+  color: var(--accent-2);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tl-item h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 6px 0 8px;
+}
+
+.tl-item p {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
