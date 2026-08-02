@@ -94,6 +94,55 @@
   transform: translate(6px, -6px);
 }
 
+/* Project screenshot */
+.project-screenshot {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-screenshot:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(255, 107, 44, 0.2);
+}
+
+/* Visit button */
+.project .btn-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--grad);
+  color: #1a0800;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 24px rgba(255, 107, 44, 0.3);
+}
+
+.project .btn-visit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 107, 44, 0.5);
+}
+
+.project .btn-visit .arrow {
+  transition: transform 0.3s;
+}
+
+.project:hover .btn-visit .arrow {
+  transform: translateX(4px);
+}
+
 .project .visual {
   position: relative;
   aspect-ratio: 4 / 3;
