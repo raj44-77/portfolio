@@ -1,0 +1,205 @@
+/* ============ PRICING SECTION ============ */
+.pricing-section {
+  padding: 120px 0;
+  position: relative;
+}
+
+.pricing-section .local-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 107, 44, 0.1);
+  border: 1px solid rgba(255, 107, 44, 0.3);
+  color: var(--accent-3);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.pricing-section .local-badge .pin {
+  font-size: 16px;
+}
+
+.pricing-section .section-head .sub {
+  font-size: 16px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+@media (max-width: 1000px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pricing Card */
+.pricing-card {
+  position: relative;
+  padding: 32px 28px;
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 107, 44, 0.45);
+  box-shadow: 0 20px 50px rgba(255, 107, 44, 0.1);
+}
+
+/* Featured card */
+.pricing-card.featured {
+  border-color: rgba(255, 107, 44, 0.5);
+  background: linear-gradient(180deg, rgba(255, 107, 44, 0.06), var(--surface));
+  box-shadow: 0 0 40px rgba(255, 107, 44, 0.08);
+}
+
+.pricing-card.featured::before {
+  content: "Most Popular";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--grad);
+  color: #1a0800;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Card Header */
+.pricing-card .card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: rgba(255, 107, 44, 0.12);
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+}
+
+.pricing-card .card-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pricing-card .card-price {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent-2);
+}
+
+.pricing-card .card-price span {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.pricing-card .card-tagline {
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Features List */
+.pricing-card .features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.pricing-card .features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.pricing-card .features-list li .check {
+  color: var(--accent-2);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Local Trust Badges */
+.pricing-card .local-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.pricing-card .local-info span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* CTA Button */
+.pricing-card .btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14.5px;
+  letter-spacing: 0.01em;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: auto;
+}
+
+.pricing-card .btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+}
+
+/* Footer Note */
+.pricing-footer {
+  text-align: center;
+  margin-top: 30px;
+  color: var(--dim);
+  font-size: 13px;
+}
+
+.pricing-footer .divider {
+  display: inline-block;
+  margin: 0 10px;
+  color: var(--border-strong);
+}
