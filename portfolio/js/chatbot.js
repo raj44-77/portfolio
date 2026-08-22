@@ -58,15 +58,14 @@
       keywords: ["why choose", "why you", "kyun", "difference", "special"],
       response: "⭐ Kyunki main local hoon aur aapki problem samajhta hoon:\n\n• Affordable pricing\n• Hindi/English communication\n• Kabhi bhi mil sakte hain\n• Pehle kaam, phir payment\n• Post-delivery support\n• Fast delivery (3-10 days)"
     },
-    fallback: {
-      keywords: [],
-      response: "Maaf kijiye, main yeh sawaal samajh nahi paya. 🤔\n\nAap WhatsApp pe directly pooch sakte hain: +91 7061660668\n\nYa try karein: 'skills', 'projects', 'pricing', 'contact', 'college'"
-    },
-        business: {
+    business: {
       keywords: ["business improve", "improve business", "business kaise", "grow business", "business badhao", "online business", "apna business", "business ko", "improve kar", "growth", "expand business", "business growth"],
       response: "📈 Aap apne business ko online laakar bahut improve kar sakte hain! \n\nYeh rahe kuch ways:\n\n1️⃣ Professional Website — Trust build hoti hai, log aapko serious leta hai\n\n2️⃣ Google Maps — Local customers aapko easily dhundh sakte hain\n\n3️⃣ WhatsApp Integration — Customers direct baat kar sakte hain\n\n4️⃣ SEO — Google mein aapka business upar aata hai\n\n5️⃣ Social Media — Instagram/Facebook se naye customers\n\n6️⃣ Online Booking — Hotels/clinics ke liye 24/7 booking\n\n7️⃣ Reviews & Ratings — Achhe reviews naye customers laate hain\n\n8️⃣ Analytics — Customer behavior samajh kar business improve hota hai\n\nMain in sab mein aapki help kar sakta hoon — affordable prices mein! 💪\n\nWhatsApp karein: +91 7061660668"
     },
-
+    fallback: {
+      keywords: [],
+      response: "Maaf kijiye, main yeh sawaal samajh nahi paya. 🤔\n\nAap WhatsApp pe directly pooch sakte hain: +91 7061660668\n\nYa try karein: 'skills', 'projects', 'pricing', 'contact', 'college'"
+    }
   };
 
   // Create chatbot DOM
@@ -96,7 +95,6 @@
         <button class="chip-btn" data-question="What is your pricing?">💰 Pricing</button>
         <button class="chip-btn" data-question="How can I contact you?">📞 Contact</button>
         <button class="chip-btn" data-question="How can I improve my business?">📈 Business Improve</button>
-       
       </div>
       <div class="chatbot-input-area">
         <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Apna sawaal likhein..." />
@@ -109,7 +107,7 @@
 
   // Get elements
   const toggle = document.getElementById('chatbotToggle');
-  const window = document.getElementById('chatbotWindow');
+  const windowEl = document.getElementById('chatbotWindow');
   const close = document.getElementById('chatbotClose');
   const messages = document.getElementById('chatbotMessages');
   const input = document.getElementById('chatbotInput');
@@ -118,14 +116,14 @@
 
   // Toggle chat
   toggle.addEventListener('click', () => {
-    window.classList.toggle('open');
-    if (window.classList.contains('open')) {
+    windowEl.classList.toggle('open');
+    if (windowEl.classList.contains('open')) {
       input.focus();
     }
   });
 
   close.addEventListener('click', () => {
-    window.classList.remove('open');
+    windowEl.classList.remove('open');
   });
 
   // Add message to chat
