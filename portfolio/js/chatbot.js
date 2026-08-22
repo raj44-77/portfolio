@@ -58,9 +58,10 @@
       keywords: ["why choose", "why you", "kyun", "difference", "special"],
       response: "⭐ Kyunki main local hoon aur aapki problem samajhta hoon:\n\n• Affordable pricing\n• Hindi/English communication\n• Kabhi bhi mil sakte hain\n• Pehle kaam, phir payment\n• Post-delivery support\n• Fast delivery (3-10 days)"
     },
-    business: {
-      keywords: ["business improve", "improve business", "business kaise", "grow business", "business badhao", "online business", "apna business", "business ko", "improve kar", "growth", "expand business", "business growth"],
+        business: {
+      keywords: ["business improve", "improve business", "business kaise", "grow business", "business badhao", "online business", "apna business", "business ko", "improve kar", "growth", "expand business", "business growth", "improve my business", "my business", "business"],
       response: "📈 Aap apne business ko online laakar bahut improve kar sakte hain! \n\nYeh rahe kuch ways:\n\n1️⃣ Professional Website — Trust build hoti hai, log aapko serious leta hai\n\n2️⃣ Google Maps — Local customers aapko easily dhundh sakte hain\n\n3️⃣ WhatsApp Integration — Customers direct baat kar sakte hain\n\n4️⃣ SEO — Google mein aapka business upar aata hai\n\n5️⃣ Social Media — Instagram/Facebook se naye customers\n\n6️⃣ Online Booking — Hotels/clinics ke liye 24/7 booking\n\n7️⃣ Reviews & Ratings — Achhe reviews naye customers laate hain\n\n8️⃣ Analytics — Customer behavior samajh kar business improve hota hai\n\nMain in sab mein aapki help kar sakta hoon — affordable prices mein! 💪\n\nWhatsApp karein: +91 7061660668"
+    
     },
     fallback: {
       keywords: [],
