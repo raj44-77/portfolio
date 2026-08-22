@@ -1,0 +1,93 @@
+/* ============ PRELOADER ============ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader .preloader-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(800px 500px at 50% 50%, rgba(255, 107, 44, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.preloader .preloader-name {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  min-height: 1.2em;
+  position: relative;
+  z-index: 1;
+}
+
+.preloader .preloader-name .cursor-blink {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  background: var(--accent);
+  margin-left: 4px;
+  animation: blink 0.7s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.preloader .preloader-role {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.preloader .preloader-role.show {
+  opacity: 1;
+}
+
+.preloader .preloader-bar {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.preloader .preloader-bar .preloader-fill {
+  height: 100%;
+  background: var(--grad);
+  border-radius: 99px;
+  width: 0%;
+  transition: width 1.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.preloader .preloader-percent {
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--accent-2);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1;
+}
