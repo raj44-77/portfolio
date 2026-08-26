@@ -64,7 +64,7 @@
   let avatarModel = null;
 
   loader.load(
-    'images/avatar.glb',
+    'images/avatar-v2.glb',
     (gltf) => {
       avatarModel = gltf.scene;
 
