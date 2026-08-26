@@ -2,8 +2,8 @@
 .avatar3d-container {
   position: relative;
   width: 100%;
-  max-width: 420px;
-  height: 420px;
+  max-width: 500px;
+  height: 500px;
   margin: 0 auto;
   cursor: grab;
   border-radius: 24px;
@@ -37,14 +37,14 @@
 
 @media (max-width: 900px) {
   .avatar3d-container {
-    max-width: 320px;
-    height: 320px;
+    max-width: 380px;
+    height: 380px;
   }
 }
 
 @media (max-width: 480px) {
   .avatar3d-container {
-    max-width: 260px;
-    height: 260px;
+    max-width: 300px;
+    height: 300px;
   }
 }
