@@ -1,4 +1,4 @@
-/* ============ 3D AVATAR — Kumar Raj (Premium) ============ */
+/* ============ 3D AVATAR — Premium Upper Body ============ */
 (function () {
   const container = document.getElementById('avatar3d');
   if (!container) return;
@@ -13,15 +13,14 @@
     return;
   }
 
-  // Scene
   const scene = new THREE.Scene();
   scene.background = null;
 
-  // Camera — closer for bigger appearance
-  const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 20);
-  camera.position.set(0, 1.5, 2.8);
+  // Camera — upper body framing, not too close
+  const camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, 0.1, 20);
+  camera.position.set(0, 1.55, 2.4);
+  camera.lookAt(0, 1.45, 0);
 
-  // Renderer
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -29,65 +28,36 @@
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.1;
+  renderer.toneMappingExposure = 1.15;
   container.appendChild(renderer.domElement);
 
-  // Lighting — professional studio setup
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  // Professional lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
   scene.add(ambientLight);
 
   const keyLight = new THREE.DirectionalLight(0xffffff, 2.5);
-  keyLight.position.set(3, 4, 3);
+  keyLight.position.set(2, 3, 3);
   keyLight.castShadow = true;
   scene.add(keyLight);
 
   const rimLight = new THREE.DirectionalLight(0xFF6B2C, 3);
-  rimLight.position.set(-3, 2.5, -2);
+  rimLight.position.set(-2, 2, -2);
   scene.add(rimLight);
 
-  const fillLight = new THREE.DirectionalLight(0xffb37a, 1);
+  const fillLight = new THREE.DirectionalLight(0xffb37a, 1.2);
   fillLight.position.set(0, 1.5, -2);
   scene.add(fillLight);
 
-  // Premium podium
-  const podiumGeometry = new THREE.CylinderGeometry(1.5, 1.7, 0.35, 64);
-  const podiumMaterial = new THREE.MeshStandardMaterial({
-    color: 0x0f0f13,
-    roughness: 0.3,
-    metalness: 0.7,
-  });
-  const podium = new THREE.Mesh(podiumGeometry, podiumMaterial);
-  podium.position.y = -0.175;
-  podium.castShadow = true;
-  podium.receiveShadow = true;
-  scene.add(podium);
-
-  // Orange ring on podium
-  const ringGeometry = new THREE.TorusGeometry(1.55, 0.04, 32, 64);
-  const ringMaterial = new THREE.MeshStandardMaterial({
-    color: 0xFF6B2C,
-    roughness: 0.2,
-    metalness: 0.5,
-    emissive: 0xFF6B2C,
-    emissiveIntensity: 0.5,
-  });
-  const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-  ring.position.y = 0.01;
-  ring.rotation.x = -Math.PI / 2;
-  scene.add(ring);
-
-  // Ground glow
-  const glowGeometry = new THREE.CircleGeometry(2.2, 64);
+  // Subtle background glow
+  const glowGeometry = new THREE.PlaneGeometry(6, 6);
   const glowMaterial = new THREE.MeshBasicMaterial({
     color: 0xFF6B2C,
     transparent: true,
-    opacity: 0.06,
-    side: THREE.DoubleSide,
+    opacity: 0.04,
   });
-  const glowDisc = new THREE.Mesh(glowGeometry, glowMaterial);
-  glowDisc.rotation.x = -Math.PI / 2;
-  glowDisc.position.y = -0.35;
-  scene.add(glowDisc);
+  const glowPlane = new THREE.Mesh(glowGeometry, glowMaterial);
+  glowPlane.position.z = -1;
+  scene.add(glowPlane);
 
   // Load avatar
   const loader = new THREE.GLTFLoader();
@@ -98,16 +68,16 @@
     (gltf) => {
       avatarModel = gltf.scene;
 
-      // Scale bigger
       const box = new THREE.Box3().setFromObject(avatarModel);
       const size = box.getSize(new THREE.Vector3());
       const maxDim = Math.max(size.x, size.y, size.z);
-      const targetHeight = 2.6;
+      const targetHeight = 3.2; // Bigger so upper body fills frame
       const scale = targetHeight / maxDim;
       avatarModel.scale.setScalar(scale);
 
-      // Position on podium
-      avatarModel.position.y = 0;
+      // Position so upper body is centered — shift model DOWN
+      // This pushes the T-pose arms below the visible frame
+      avatarModel.position.y = -1.2;
       avatarModel.position.x = 0;
       avatarModel.position.z = 0;
 
@@ -130,25 +100,21 @@
     }
   );
 
-  // Mouse tracking
+  // Mouse tracking — subtle rotation only
   let mouseX = 0;
   let mouseY = 0;
-  let currentRotX = 0;
   let currentRotY = 0;
-  let targetRotX = 0;
   let targetRotY = 0;
 
   container.addEventListener('mousemove', (e) => {
     const rect = container.getBoundingClientRect();
     mouseX = ((e.clientX - rect.left) / rect.width) - 0.5;
     mouseY = ((e.clientY - rect.top) / rect.height) - 0.5;
-    targetRotY = mouseX * 0.6;
-    targetRotX = -mouseY * 0.2;
   });
 
   container.addEventListener('mouseleave', () => {
-    targetRotY = 0;
-    targetRotX = 0;
+    mouseX = 0;
+    mouseY = 0;
   });
 
   // Animation
@@ -159,27 +125,24 @@
     const delta = clock.getDelta();
     const time = clock.getElapsedTime();
 
-    // Smooth rotation — only camera orbits, model stays professional
-    targetRotY += delta * 0.12; // Slow auto-rotate
-    currentRotY += (targetRotY - currentRotY) * 0.05;
-    currentRotX += (targetRotX - currentRotX) * 0.05;
+    if (avatarModel) {
+      // Very subtle rotation — just slight sway
+      targetRotY += delta * 0.08;
+      currentRotY += (targetRotY - currentRotY) * 0.03;
 
-    camera.position.x = Math.sin(currentRotY) * 2.8;
-    camera.position.z = Math.cos(currentRotY) * 2.8;
-    camera.position.y = 1.5 + currentRotX + Math.sin(time * 1.2) * 0.05;
-    camera.lookAt(0, 1.25, 0);
+      avatarModel.rotation.y = currentRotY + mouseX * 0.3;
+      avatarModel.rotation.x = -mouseY * 0.08;
+    }
 
-    // Subtle ring rotation
-    ring.rotation.z += delta * 0.5;
-
-    // Glow pulsing
-    glowDisc.material.opacity = 0.05 + Math.sin(time * 1.5) * 0.02;
+    // Camera subtle movement
+    camera.position.x = mouseX * 0.2;
+    camera.position.y = 1.55 + mouseY * 0.15 + Math.sin(time * 1.2) * 0.02;
+    camera.lookAt(0, 1.45, 0);
 
     renderer.render(scene, camera);
   }
   animate();
 
-  // Resize
   function onResize() {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
